@@ -46,11 +46,11 @@ orig_fstat (int fd, struct stat *buf)
 #include <errno.h>
 #include <unistd.h>
 
-#if HAVE_MSVC_INVALID_PARAMETER_HANDLER
+#if !defined(__MINGW32__) && HAVE_MSVC_INVALID_PARAMETER_HANDLER
 # include "msvc-inval.h"
 #endif
 
-#if HAVE_MSVC_INVALID_PARAMETER_HANDLER
+#if !defined(__MINGW32__) && HAVE_MSVC_INVALID_PARAMETER_HANDLER
 static int
 fstat_nothrow (int fd, struct stat *buf)
 {
